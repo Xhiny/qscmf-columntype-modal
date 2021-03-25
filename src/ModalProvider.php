@@ -1,9 +1,9 @@
 <?php
-namespace ColumnType\modal;
+namespace ModalColumnType;
 
 use Bootstrap\Provider;
 use Bootstrap\RegisterContainer;
-use Qscmf\Builder\ColumnType\Modal\Modal;
+use ModalColumnType\ColumnType\Modal;
 
 class ModalProvider implements Provider {
 
