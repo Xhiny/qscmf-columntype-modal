@@ -2,7 +2,7 @@
     cursor: pointer;
 }
 .qs-column-modal .modal-dialog{
-    width: 600px;
+    width: 50%;
     height: 60%;
     overflow: hidden;
 }

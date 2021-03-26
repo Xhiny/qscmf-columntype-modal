@@ -8,7 +8,7 @@ composer require quansitech/qscmf-columntype-modal
 ```
 
 #### 如何使用
-+ 通过value设置宽度与高度，默认宽度600px，高度60%
++ 通过value设置宽度与高度，默认宽度50%，高度60%
 ```php
     $option = [
         'content' => 'modal content',
