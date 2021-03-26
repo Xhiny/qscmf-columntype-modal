@@ -9,5 +9,7 @@ class ModalProvider implements Provider {
 
     public function register(){
         RegisterContainer::registerListColumnType('modal', Modal::class);
+
+        RegisterContainer::registerSymLink(WWW_DIR . '/Public/column-type-modal', __DIR__ . '/../asset');
     }
 }

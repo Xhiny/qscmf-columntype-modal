@@ -15,6 +15,20 @@ class Modal extends ColumnType
         $view->assign('item', $option);
         $view->assign('value', $data[$option['name']]);
 
+        $view = $this->parseOptionValue($option['value'], $view);
+
         return $view->fetch(__DIR__ . '/modal.html');
+    }
+
+    private function parseOptionValue($value, $view){
+        if (is_array($value)){
+            $content = $value['content'];
+        }else{
+            $content = $value;
+        }
+
+        $view->assign('content', $content);
+
+        return $view;
     }
 }

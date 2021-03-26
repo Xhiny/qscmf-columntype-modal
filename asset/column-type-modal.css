@@ -1,0 +1,36 @@
+.qs-column-modal-text {
+    cursor: pointer;
+}
+.qs-column-modal .modal-dialog{
+    width: 600px;
+    height: 60%;
+    overflow: hidden;
+}
+.qs-column-modal .modal-content{
+    padding: 10px 30px 20px;
+    height: 100%;
+}
+.qs-column-modal .column-modal-body-info{
+    padding: 0;
+    width: 100%;
+    height: 95%;
+    overflow: auto;
+ }
+/*.qs-column-modal .column-modal-body-info:hover{*/
+/*    overflow: auto;*/
+/*}*/
+.qs-column-modal .scrollbar-primary::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #F5F5F5;
+    border-radius: 5px;
+}
+.qs-column-modal .scrollbar-primary::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: #33b5e5;
+    opacity: 0.4;
+}
+.qs-column-modal .content{
+    overflow: unset;
+}
