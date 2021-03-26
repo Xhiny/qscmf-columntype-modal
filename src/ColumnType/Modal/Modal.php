@@ -1,7 +1,6 @@
 <?php
 
-namespace Qscmf\Builder\ColumnType\Modal;
-
+namespace ModalColumnType\ColumnType\Modal;
 
 use Illuminate\Support\Str;
 use Qscmf\Builder\ColumnType\ColumnType;
@@ -16,6 +15,6 @@ class Modal extends ColumnType
         $view->assign('item', $option);
         $view->assign('value', $data[$option['name']]);
 
-        return $view->fetch(__DIR__.'/modal.html');
+        return $view->fetch(__DIR__ . '/modal.html');
     }
 }
