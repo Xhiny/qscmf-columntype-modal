@@ -29,8 +29,8 @@ composer require quansitech/qscmf-columntype-modal
 
 ```
 + 使用技巧
+1.与formBuilder结合使用，展示渲染后的html
 ```php
-    // 与formBuilder结合使用，可将渲染后的html直接放入弹窗
     public function genModelHtml(){
         $info = [
             'title' => 'title',
@@ -52,6 +52,12 @@ composer require quansitech/qscmf-columntype-modal
     // ListBuilder对应列配置
     ->addTableColumn('nick_name', '用户名', 'modal', $this->genModelHtml(), false, '点击查看更多信息')
 ```
+
+2.使用占位符动态替换数据
+```php
+    ->addTableColumn('nick_name', '用户名', 'modal', '__nick_name__', false, '点击查看更多信息');
+```
+
 + 通过value设置api_url，支持展示接口返回的内容
 ```php
 // 接口返回JSON数据格式
@@ -75,6 +81,7 @@ public function genModelHtml($id){
     $this->ajaxReturn(['status' => 1, 'info' => $builder->display(true)]);
 }
 
+// 使用占位符动态替换数据
  $option = [
     'api_url' => U('genModelHtml', ['id'=>'__id__'], true, true),
     'width' => '50%',
