@@ -10,6 +10,9 @@
             </div>
 
             <div class="modal-body column-modal-body-info scrollbar-primary">
+                <div class="preloader hidden">
+                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                </div>
                 <div class="inner">
                     {$content}
                 </div>
@@ -22,16 +25,45 @@
 <script type="text/javascript">
     jQuery(document).ready(function () {
         var qsColumnTypeModalPDom = $('.qs-column-modal .modal-dialog');
-
         var options = {};
-        options.width = "{$item['value']['width']}";
-        if (options.width) resetModalCss('width', options.width,qsColumnTypeModalPDom);
+        init(options);
 
-        options.height = "{$item['value']['height']}";
+        if (options.width) resetModalCss('width', options.width,qsColumnTypeModalPDom);
         if (options.height) resetModalCss('height', options.height,qsColumnTypeModalPDom);
+
+        $('.{$gid}-column-modal').on('click', function () {
+            if (options.apiUrl) renderContent(options.apiUrl);
+        });
     });
 
     function resetModalCss(name, value, dom) {
         dom.css(name, value);
+    }
+
+    function init(options = null) {
+        if (!options){
+            options = {};
+        }
+        options.width = "{$width}";
+        options.height = "{$height}";
+        options.apiUrl = "{$api_url}";
+
+        return options;
+    }
+
+    function renderContent(apiUrl) {
+        var infoDom = $('.qs-column-modal .column-modal-body-info .inner');
+        $('.preloader').removeClass('hidden');
+        infoDom.html('');
+        $.get(apiUrl, function (res) {
+            if (res.status === 1) {
+                $('.preloader').addClass('hidden');
+                infoDom.html(res.info || '');
+            }
+            if (res.status === 0){
+                alert(res.info || '错误');
+                $('#{$gid}Modal').modal('hide');
+            }
+        });
     }
 </script>
