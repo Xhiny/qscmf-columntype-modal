@@ -84,11 +84,11 @@ composer require quansitech/qscmf-columntype-modal
 
 + 设置modal框宽度与高度，默认宽度50%，高度60%
 >```php
->    $option = [
->        'content' => 'modal content',
->        'width' => '50%',
->        'height' => '50%'
->    ];
+>$option = [
+>    'content' => 'modal content',
+>    'width' => '50%',
+>    'height' => '50%'
+>];
 >
->    ->addTableColumn('nick_name', '用户名', 'modal', $option, false, '点击查看更多信息')
+>->addTableColumn('nick_name', '用户名', 'modal', $option, false, '点击查看更多信息')
 >```
