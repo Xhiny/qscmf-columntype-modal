@@ -14,28 +14,10 @@ composer require quansitech/qscmf-columntype-modal
 > 如列name，只需用 __name__ 作为占位符，生成list后会自动替换成该记录的真实name值。
 > 若列名存在下划线，如nick_name，那么占位符就是 __nick_name__ ，以此类推。
 > ```
-> 1. 当value为数组
 > ```php
-> ->addTableColumn('id', '用户名', 'modal', ['content' => '我是id'], false, '点击查看更多信息')
-> ->addTableColumn('name', '用户名', 'modal', ['content' => '__name__'], false, '点击查看更多信息')
-> ->addTableColumn('nick_name', '用户名', 'modal', ['content' => '__nick_name__'], false, '点击查看更多信息')
-> ```
-> 2. 当value为字符串
-> ```php
-> ->addTableColumn('id', '用户名', 'modal', '我是id', false, '点击查看更多信息')
-> ->addTableColumn('name', '用户名', 'modal', '__name__', false, '点击查看更多信息')
-> ->addTableColumn('nick_name', '用户名', 'modal', '__nick_name__', false, '点击查看更多信息')
-> ```
-> 
-> 3. 使用技巧
->```php
->  // 与formBuilder结合使用，展示渲染后的html
->  public function genModelHtml(){
->      $info = [
->          'title' => 'title',
->          'summary' => 'summary',
->          'cover' => 2
->      ];
+> // 可以与formBuilder结合使用，展示渲染后的html
+>  public function genModelHtml($id){
+>      $info = D('Post')->getOne($id); 
 >      $builder = new FormBuilder();
 >      $builder
 >          ->addFormItem('title', 'text', '标题')
@@ -47,10 +29,18 @@ composer require quansitech/qscmf-columntype-modal
 >
 >      return $builder->display(true);
 >  }
->
->  // ListBuilder对应列配置
->  ->addTableColumn('nick_name', '用户名', 'modal', $this->genModelHtml(), false, '点击查看更多信息')
->```
+> 
+> $data_list = D('User')->limit(10)->select();
+> foreach ($data_list as &$v){
+>     $v['modal_html'] = $this->genModelHtml($v['post_id']);
+> }
+> 
+> // 当value为数组
+> ->addTableColumn('nick_name', '用户名', 'modal', ['content' => '__modal_html__'], false, '点击查看更多信息')
+> 
+> //当value为字符串
+> ->addTableColumn('nick_name', '用户名', 'modal', '__modal_html__', false, '点击查看更多信息')
+> ```
 
 + 设置api_url，将接口返回的info设置为modal框内容
 > 1. 接口说明
