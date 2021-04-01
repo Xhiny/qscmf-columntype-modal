@@ -63,10 +63,14 @@ class Modal extends ColumnType
     }
 
     private function init($value){
-        $value['width'] && $this->setWidth($value['width']);
-        $value['height'] && $this->setHeight($value['height']);
-        $value['api_url'] && $this->setApiUrl($value['api_url']);
-        !$this->api_url && $this->parseContent($value);
+        if (is_array($value)){
+            $value['width'] && $this->setWidth($value['width']);
+            $value['height'] && $this->setHeight($value['height']);
+            $value['api_url'] && $this->setApiUrl($value['api_url']);
+            !$this->api_url && $this->parseContent($value['content']);
+        }else{
+            $this->parseContent($value);
+        }
     }
 
     private function parseContent($value){
