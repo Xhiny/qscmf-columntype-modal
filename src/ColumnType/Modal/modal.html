@@ -21,7 +21,11 @@
     </div>
 </div>
 
-<link rel="stylesheet" href="{:asset('column-type-modal/column-type-modal.css')}" />
+<notdefined name="qs_column_type_modal">
+    <link rel="stylesheet" href="{:asset('column-type-modal/column-type-modal.css')}" />
+    <define name="qs_column_type_modal" value="1" />
+</notdefined>
+
 <script type="text/javascript">
     jQuery(document).ready(function () {
         var qsColumnTypeModalPDom = $('.qs-column-modal .modal-dialog');
